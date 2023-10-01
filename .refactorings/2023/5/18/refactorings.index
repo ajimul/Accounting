@@ -1,0 +1,50 @@
+1682964803751	Rename type 'GenericsPurchase'
+1682964829237	Copy compilation unit
+1682965033314	Rename type 'Purchase'
+1682965056750	Rename type 'PurchaseVoucherGeneric'
+1682965066596	Delete element
+1682965089720	Copy compilation unit
+1682965104666	Copy compilation unit
+1682965128732	Rename type 'PurchaseService'
+1682965141649	Rename type 'PurchaseServiceEmi'
+1682965172254	Copy compilation unit
+1682965490199	Copy compilation unit
+1682965755306	Delete element
+1682965766824	Copy compilation unit
+1682966919133	Copy compilation unit
+1682986543820	Rename type 'ListOfService'
+1682986557617	Rename type 'ProductOfService'
+1682990435110	Delete elements
+1682990544879	Copy compilation unit
+1682990696614	Rename type 'ProductOfServiceService'
+1682990743268	Rename type 'ProductOfServiceRepo'
+1682990789151	Rename type 'ListOfServiceRepo'
+1682990974996	Copy compilation unit
+1682993819423	Rename type 'Service'
+1682993833822	Rename type 'ServiceRepo'
+1683037793403	Delete element
+1683044834237	Rename type 'ProductService'
+1683044847446	Rename type 'ProductServiceRepo'
+1683050861088	Delete element
+1683050878653	Copy compilation unit
+1683050991171	Delete element
+1683051002002	Copy compilation unit
+1683153575978	Delete elements
+1683153593122	Copy compilation unit
+1683153658190	Copy compilation unit
+1683153836188	Rename type 'Sales'
+1683153855810	Copy compilation unit
+1683310028553	Copy compilation unit
+1683382179540	Copy compilation unit
+1683394171964	Delete elements
+1683394242699	Delete element
+1683394247251	Delete element
+1683394271798	Rename type 'SalesServiceEmi'
+1683394389746	Rename type 'AmcServiceEmi'
+1683394431638	Delete element
+1683394802656	Rename type 'ModelProduct'
+1683394813396	Rename type 'ModelProductService'
+1683394826376	Rename type 'InventoryJournal'
+1683394871961	Delete elements
+1683394892660	Rename type 'TransectionalAccounts'
+1683412789096	Delete element

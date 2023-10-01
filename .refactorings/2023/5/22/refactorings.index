@@ -1,0 +1,46 @@
+1685514101534	Delete element
+1685514582935	Delete element
+1685515601832	Delete element
+1685516363329	Rename type 'TestController'
+1685516389514	Copy compilation unit
+1685538540288	Rename package 'com.accounting.rest.controller'
+1685538571796	Rename package 'com.accounting.rest.services'
+1685538585151	Rename package 'com.accounting.rest.repository'
+1685538598538	Rename package 'com.accounting.rest.model'
+1685538613235	Rename package 'com.accounting.rest.exception'
+1685538635411	Rename package 'com.accounting.rest.entiti_model'
+1685538692235	Rename package 'entiti'
+1685538712464	Rename package 'JesperReport'
+1685538826876	Copy compilation unit
+1685538854542	Delete element
+1685538893194	Copy compilation unit
+1685538906038	Delete element
+1685539015147	Copy package
+1685539092028	Delete element
+1685539126987	Delete element
+1685539174926	Delete element
+1685539211678	Delete element
+1685539556014	Rename package 'controller'
+1685539586748	Rename package 'dto'
+1685539616504	Rename package 'entity'
+1685539630994	Rename package 'exception'
+1685539642229	Rename package 'report'
+1685539655372	Rename package 'repository'
+1685539665919	Rename package 'services'
+1685539849784	Rename package 'com.accounting.rest.services'
+1685539878683	Rename package 'services'
+1685540033910	Copy package
+1685540062480	Delete element
+1685540076928	Rename package 'com.accounting.rest.controller.copy'
+1685540130218	Copy packages
+1685540139495	Delete elements
+1685540149738	Rename package 'com.accounting.rest.dto.copy'
+1685540158078	Rename package 'com.accounting.rest.entity.copy'
+1685540166378	Rename package 'com.accounting.rest.exception.copy'
+1685540173284	Rename package 'com.accounting.rest.report.copy'
+1685540180034	Rename package 'com.accounting.rest.repository.copy'
+1685540187222	Rename package 'com.accounting.rest.services.copy'
+1685558976298	Rename package 'com.accounting.rest.dto'
+1685559009432	Rename package 'com.accounting.rest.model'
+1685559140900	Rename package 'com.accounting.rest.dto'
+1685559211023	Rename package 'com.accounting.rest.model'

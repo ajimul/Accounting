@@ -1,0 +1,17 @@
+1681760466180	Rename package 'com.accounting.rest.model'
+1681760488822	Rename package 'com.accounting.rest.generics'
+1681760555637	Move compilation unit
+1681760682679	Move compilation unit
+1681761373733	Copy compilation unit
+1681764010377	Delete element
+1681764874917	Move compilation unit
+1681765426427	Rename type 'StockJournal'
+1681765440277	Rename type 'StockJournalRepo'
+1681911881611	Rename type 'ItemsGroup'
+1681912317279	Rename type 'ItemsStore'
+1681912344540	Rename type 'ItemsStockJournal'
+1681912360459	Rename type 'ItemsStock'
+1681912525188	Rename type 'ItemsGroupRepo'
+1681912593126	Rename type 'ItemsStockJournalRepo'
+1681912615944	Rename type 'ItemsStockRepo'
+1681912642284	Rename type 'ItemsStoreRepo'
