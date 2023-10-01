@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.accounting.rest.AccountingApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 25.384 s - in com.accounting.rest.AccountingApplicationTests
