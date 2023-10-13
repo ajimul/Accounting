@@ -86,6 +86,7 @@ public class AccountsServices {
 		preeAccounts.add("Discount Received Account");
 		preeAccounts.add("Capital Account");
 		preeAccounts.add("Drawings Capital Account");
+		preeAccounts.add("Factory Account");
 		List<Accounts> acList = new ArrayList<Accounts>();
 
 		for (String accountName : preeAccounts) {

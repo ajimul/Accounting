@@ -41,6 +41,10 @@ public class InventoryItems {
 	@JoinColumn(name = "bookDetailsInventoryItems_Ref", referencedColumnName = "iiId")
 	private List<BookDetails> bookDetails;
 
+	@OneToMany(targetEntity = Bomlist.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "bomListItemsId_Ref", referencedColumnName = "iiId")
+	private List<Bomlist> bomlist;
+
 	public InventoryItems() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -50,7 +54,7 @@ public class InventoryItems {
 			Double iiSalesAmount, Integer iiTDPercent, String iiParticular, String iiHsn, String iiModelNo,
 			String iiUnitName, Integer iiCgstPercent, Integer iiSgstPercent, Integer iiIgstPercent,
 			Integer iiNoOfService, Integer iiMonthOfWarranty, List<InventoryJournal> inventoryJournals,
-			List<BookDetails> bookDetails) {
+			List<BookDetails> bookDetails, List<Bomlist> bomlist) {
 		super();
 		this.iiId = iiId;
 		this.ii_ilId = ii_ilId;
@@ -70,6 +74,7 @@ public class InventoryItems {
 		this.iiMonthOfWarranty = iiMonthOfWarranty;
 		this.inventoryJournals = inventoryJournals;
 		this.bookDetails = bookDetails;
+		this.bomlist = bomlist;
 	}
 
 	public Long getIiId() {
@@ -78,14 +83,6 @@ public class InventoryItems {
 
 	public void setIiId(Long iiId) {
 		this.iiId = iiId;
-	}
-
-	public List<BookDetails> getBookDetails() {
-		return bookDetails;
-	}
-
-	public void setBookDetails(List<BookDetails> bookDetails) {
-		this.bookDetails = bookDetails;
 	}
 
 	public Long getIi_ilId() {
@@ -214,6 +211,22 @@ public class InventoryItems {
 
 	public void setInventoryJournals(List<InventoryJournal> inventoryJournals) {
 		this.inventoryJournals = inventoryJournals;
+	}
+
+	public List<BookDetails> getBookDetails() {
+		return bookDetails;
+	}
+
+	public void setBookDetails(List<BookDetails> bookDetails) {
+		this.bookDetails = bookDetails;
+	}
+
+	public List<Bomlist> getBomlist() {
+		return bomlist;
+	}
+
+	public void setBomlist(List<Bomlist> bomlist) {
+		this.bomlist = bomlist;
 	}
 
 }
