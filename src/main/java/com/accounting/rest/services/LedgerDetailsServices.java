@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.accounting.rest.entity.LedgerDetails;
 import com.accounting.rest.exception.LedgerDetailsNotFoundException;
 import com.accounting.rest.repository.LedgerDetailsRepo;
 
 @Service
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager")//Use For Multitenant
 public class LedgerDetailsServices {
 
 	private final LedgerDetailsRepo ledgerDetailsRepo;

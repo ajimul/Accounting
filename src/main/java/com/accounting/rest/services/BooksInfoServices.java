@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.accounting.rest.entity.BookInfo;
 import com.accounting.rest.exception.BookInfoNotFoundException;
 import com.accounting.rest.repository.BookInfoRepo;
 
 @Service
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager")//Use For Multitenant
 public class BooksInfoServices {
 
 	private final BookInfoRepo bookInfoRepo;

@@ -31,7 +31,8 @@ import com.accounting.rest.services.EmiService;
 import com.accounting.rest.services.FolioNumberServices;
 
 @RestController
-@Transactional
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager")//Use For Multitenant
 //@CrossOrigin(origins = "https://spotsolution.store")
 @RequestMapping("api/emi")
 @Scope("prototype")

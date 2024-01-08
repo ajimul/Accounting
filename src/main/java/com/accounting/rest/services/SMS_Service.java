@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.accounting.rest.dto.SMSModel;
 import com.accounting.rest.entity.SMS;
@@ -15,6 +16,8 @@ import com.accounting.rest.repository.AccountsRepo;
 import com.accounting.rest.repository.SMSRepo;
 
 @Service
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager")//Use For Multitenant
 public class SMS_Service {
 	private final SMSRepo SMSrepo;
 	private final AccountsRepo accountsRepo;

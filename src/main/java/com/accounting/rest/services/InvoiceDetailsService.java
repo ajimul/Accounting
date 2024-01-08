@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.accounting.rest.dto.BooksDetailsDTO;
 import com.accounting.rest.dto.PartyBookInfoDto;
@@ -14,6 +15,8 @@ import com.accounting.rest.repository.AccountsRepo;
 import com.accounting.rest.repository.InventoryItemsRepo;
 
 @Service
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager")//Use For Multitenant
 public class InvoiceDetailsService {
 
 	private final AccountsRepo accountsRepo;

@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.accounting.rest.entity.InventoryJournal;
 import com.accounting.rest.repository.InventoryJournalRepo;
 
 @Service
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager")//Use For Multitenant
 public class Inventory_JournalService {
 	private final InventoryJournalRepo inventoryJournalRepo;
 

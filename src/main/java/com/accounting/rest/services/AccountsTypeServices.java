@@ -2,69 +2,33 @@ package com.accounting.rest.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.accounting.rest.dto.GenericsAccountsType;
 import com.accounting.rest.entity.AccountType;
 import com.accounting.rest.exception.AccountTypeNotFoundException;
+import com.accounting.rest.post.service.PostAccountsType;
 import com.accounting.rest.repository.AccountTypeRepo;
 
 @Service
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager") // Use For Multitenant
 public class AccountsTypeServices {
-
-	private final AccountTypeRepo accountTypeRepo;
+	@Autowired
+	private AccountTypeRepo accountTypeRepo;
 
 	@Autowired
-	public AccountsTypeServices(AccountTypeRepo accountTypeRepo) {
-		this.accountTypeRepo = accountTypeRepo;
-	}
+	public PostAccountsType postAccountsType;
 
 	@PostConstruct
-	public void PreeAccountsList() {
-		ArrayList<String> preeAccountTypes = new ArrayList<String>();
-		preeAccountTypes.add("Direct Expenses");
-		preeAccountTypes.add("Indirect Expenses");
-		preeAccountTypes.add("Direct Income");
-		preeAccountTypes.add("Indirect Income");
-		preeAccountTypes.add("Current Assets");
-		preeAccountTypes.add("Fixed Assets");
-		preeAccountTypes.add("Current Liability");
-		preeAccountTypes.add("Sundry Debtors");
-		preeAccountTypes.add("Non Current Liability");
-		preeAccountTypes.add("Capital Account");
-
-		List<AccountType> acTypeList = new ArrayList<AccountType>();
-		for (int i = 0; i < preeAccountTypes.size(); i++) {
-			Optional<AccountType> optionalAcType = Optional.ofNullable(new AccountType());
-			optionalAcType = Optional.ofNullable(getAccTypeId_ByName(preeAccountTypes.get(i)));
-			if (!optionalAcType.isPresent()) {
-				AccountType acType = new AccountType();
-				acType.setAccountTypeName(preeAccountTypes.get(i));
-				acType.setAccountTypeDebitAmount(null);
-				acType.setAccountTypeCreditAmount(null);
-				acTypeList.add(acType);
-			}
-
-		}
-
-		if (acTypeList.size() != 0) {
-			accountTypeRepo.saveAll(acTypeList);
-		}
-
+	public void AccountsTypeList() {
+		postAccountsType.AccountTypeAccountsList();
 	}
-
-//	public Optional<AccountType> getAccTypeId_ByName(String typeName) {
-//		AccountType ac = new AccountType();
-//		ac = accountTypeRepo.getAccTypeId_ByName(typeName);
-//		Optional<AccountType> opt = Optional.ofNullable(ac);
-//		return opt;
-//
-//	}
 
 //Add AccountsType
 

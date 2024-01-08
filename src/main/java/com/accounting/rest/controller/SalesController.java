@@ -77,7 +77,8 @@ import com.accounting.rest.services.InventoryItemsService;
  */
 
 @RestController
-@Transactional
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager") // Use For Multitenant
 //@CrossOrigin(origins = "https://spotsolution.store")
 @RequestMapping("api/sales")
 @Scope("prototype")

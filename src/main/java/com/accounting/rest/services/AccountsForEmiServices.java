@@ -5,51 +5,31 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.accounting.rest.dto.TransactionalAccountDTO;
 import com.accounting.rest.entity.AccountsForEmi;
+import com.accounting.rest.post.service.PostAccountAMC;
 import com.accounting.rest.repository.AccountsForEmiRepo;
 
 @Service
-@Transactional
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager")//Use For Multitenant
 
 public class AccountsForEmiServices {
-
-	private final AccountsForEmiRepo accountsForEmiRepo;
-	private final AccountsServices accountsServices;
-
 	@Autowired
-	public AccountsForEmiServices(AccountsForEmiRepo accountsForEmiRepo, AccountsServices accountsServices) {
-		this.accountsForEmiRepo = accountsForEmiRepo;
-		this.accountsServices = accountsServices;
-	}
+	private AccountsForEmiRepo accountsForEmiRepo;
+	@Autowired
+	private AccountsServices accountsServices;
+	@Autowired
+	private PostAccountAMC postAccountAMC;
 
 	@PostConstruct
-	public void PreeAccountsList() {
-		ArrayList<String> preeAccounts = new ArrayList<String>();
-		preeAccounts.add("Cash Account");
-		preeAccounts.add("Bank Account");
-
-		List<AccountsForEmi> acList = new ArrayList<AccountsForEmi>();
-		for (int i = 0; i < preeAccounts.size(); i++) {
-			Optional<AccountsForEmi> optionalAc = Optional.ofNullable(new AccountsForEmi());
-			optionalAc = getAccounts(preeAccounts.get(i));
-			if (!optionalAc.isPresent()) {
-				AccountsForEmi ac = new AccountsForEmi();
-				ac.setAccountName(preeAccounts.get(i));
-				acList.add(ac);
-			}
-
-		}
-
-		if (acList.size() != 0) {
-			accountsForEmiRepo.saveAll(acList);
-		}
-
+	public void EMIAccountList() {
+		postAccountAMC.AccountAMCList();
 	}
 
 	// Find Accounts By Name

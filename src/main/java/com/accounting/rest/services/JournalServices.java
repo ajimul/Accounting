@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.accounting.rest.dto.GenericsJournal;
 import com.accounting.rest.dto.GenericsJournalDetails;
@@ -30,6 +31,8 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Service
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager")//Use For Multitenant
 public class JournalServices {
 
 	private final BookInfoRepo bookInfoRepo;
@@ -87,7 +90,7 @@ public class JournalServices {
 		Lis_bookInfo = bookInfoRepo.GetBookByBookTypeId(bookId);
 		for (int k = 0; k < Lis_bookInfo.size(); k++) {
 			GenericsJournal journal = new GenericsJournal();
-			bookType = bookTypeRepo.getById(Lis_bookInfo.get(k).getBookInfoType_Ref());
+			bookType = bookTypeRepo.findByBookTypeId(Lis_bookInfo.get(k).getBookInfoType_Ref());
 
 			journal.setBookName(bookType.getBookTypeName());
 			journal.setBookNarration(Lis_bookInfo.get(k).getBookInfoNarration());

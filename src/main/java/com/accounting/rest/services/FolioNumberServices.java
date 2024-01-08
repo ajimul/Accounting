@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.accounting.rest.dto.FolioDTO;
 import com.accounting.rest.dto.GenericsFolioNumber;
@@ -18,6 +19,8 @@ import com.accounting.rest.entity.InventoryItems;
 import com.accounting.rest.repository.FolioNumberRepo;
 
 @Service
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager")//Use For Multitenant
 public class FolioNumberServices {
 
 	private final AccountsServices accountsServices;

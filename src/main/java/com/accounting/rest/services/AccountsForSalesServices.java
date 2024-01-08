@@ -5,52 +5,33 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.accounting.rest.dto.TransactionalAccountDTO;
 import com.accounting.rest.entity.AccountsForSales;
+import com.accounting.rest.post.service.PostAccountSales;
 import com.accounting.rest.repository.AccountsForSalesRepo;
 
 @Service
-@Transactional
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager")//Use For Multitenant
 
 public class AccountsForSalesServices {
 
-	private final AccountsForSalesRepo accountsForSalesRepo;
-	private final AccountsServices accountsServices;
+	@Autowired
+	private AccountsForSalesRepo accountsForSalesRepo;
+	@Autowired
+	private AccountsServices accountsServices;
 
 	@Autowired
-	public AccountsForSalesServices(AccountsForSalesRepo accountsForSalesRepo, AccountsServices accountsServices) {
-		this.accountsForSalesRepo = accountsForSalesRepo;
-		this.accountsServices = accountsServices;
-	}
+	public PostAccountSales postAccountSales;
 
 	@PostConstruct
-	public void PreeAccountsList() {
-		ArrayList<String> preeAccounts = new ArrayList<String>();
-		preeAccounts.add("Sundry Debtors");
-		preeAccounts.add("Cash Account");
-		preeAccounts.add("Bank Account");
-
-		List<AccountsForSales> acList = new ArrayList<AccountsForSales>();
-		for (int i = 0; i < preeAccounts.size(); i++) {
-			Optional<AccountsForSales> optionalAc = Optional.ofNullable(new AccountsForSales());
-			optionalAc = getAccounts(preeAccounts.get(i));
-			if (!optionalAc.isPresent()) {
-				AccountsForSales ac = new AccountsForSales();
-				ac.setAccountName(preeAccounts.get(i));
-				acList.add(ac);
-			}
-
-		}
-
-		if (acList.size() != 0) {
-			accountsForSalesRepo.saveAll(acList);
-		}
-
+	public void SalesAccountList() {
+		postAccountSales.AccountsSalesList();
 	}
 
 	// Find Accounts By Name

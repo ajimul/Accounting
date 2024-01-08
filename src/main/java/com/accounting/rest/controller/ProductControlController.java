@@ -19,7 +19,8 @@ import com.accounting.rest.repository.ProductServicesRepo;
 import com.accounting.rest.services.AccountsServices;
 
 @RestController
-@Transactional
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager")//Use For Multitenant
 //@CrossOrigin(origins = "https://spotsolution.store")
 @RequestMapping("api/product/service")
 @Scope("prototype")

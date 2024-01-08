@@ -13,7 +13,10 @@ public interface UsersRepo extends JpaRepository<Users, Long> {
 	@Query("select u from Users u where u.userId = :userId")
 	Users GetUserNameById(@Param("userId") Long userId);
 
-	Optional<Users> findByUserName(String userName);
+	@Query("select u from Users u where u.userName = :userName")
+	Optional<Users> findBy_UserName(@Param("userName") String userName);
+
+	Users findByUserName(String userName);
 
 	@Query("select u from Users u where u.userName = :userName and u.password = :password")
 	Optional<Users> find_userName_password(@Param("userName") String userName, @Param("password") String password);

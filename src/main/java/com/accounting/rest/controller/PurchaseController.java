@@ -22,6 +22,7 @@ import com.accounting.rest.entity.InventoryItems;
 import com.accounting.rest.entity.Ledger;
 import com.accounting.rest.entity.LedgerDetails;
 import com.accounting.rest.services.AccountsServices;
+//import com.accounting.rest.service.AccountsServices;
 import com.accounting.rest.services.AccountsTypeServices;
 import com.accounting.rest.services.BookTypeServices;
 import com.accounting.rest.services.FolioNumberServices;
@@ -77,7 +78,8 @@ import com.accounting.rest.services.InventoryItemsService;
  */
 
 @RestController
-@Transactional
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager") // Use For Multitenant
 //@CrossOrigin(origins = "https://spotsolution.store")
 @RequestMapping("api/purchase")
 @Scope("prototype")

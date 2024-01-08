@@ -5,51 +5,33 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.accounting.rest.dto.TransactionalAccountDTO;
 import com.accounting.rest.entity.AccountsForSalary;
+import com.accounting.rest.post.service.PostAccountSalary;
 import com.accounting.rest.repository.AccountsForSalaryRepo;
 
 @Service
-@Transactional
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager") // Use For Multitenant
 
 public class AccountsForSalaryServices {
 
-	private final AccountsForSalaryRepo accountsForSalaryRepo;
-	private final AccountsServices accountsServices;
+	@Autowired
+	private AccountsForSalaryRepo accountsForSalaryRepo;
+	@Autowired
+	private AccountsServices accountsServices;
 
 	@Autowired
-	public AccountsForSalaryServices(AccountsForSalaryRepo accountsForSalaryRepo, AccountsServices accountsServices) {
-		this.accountsForSalaryRepo = accountsForSalaryRepo;
-		this.accountsServices = accountsServices;
-	}
+	public PostAccountSalary postAccountSalary;
 
 	@PostConstruct
-	public void PreeAccountsList() {
-		ArrayList<String> preeAccounts = new ArrayList<String>();
-		preeAccounts.add("Cash Account");
-		preeAccounts.add("Bank Account");
-
-		List<AccountsForSalary> acList = new ArrayList<AccountsForSalary>();
-		for (int i = 0; i < preeAccounts.size(); i++) {
-			Optional<AccountsForSalary> optionalAc = Optional.ofNullable(new AccountsForSalary());
-			optionalAc = getAccounts(preeAccounts.get(i));
-			if (!optionalAc.isPresent()) {
-				AccountsForSalary ac = new AccountsForSalary();
-				ac.setAccountName(preeAccounts.get(i));
-				acList.add(ac);
-			}
-
-		}
-
-		if (acList.size() != 0) {
-			accountsForSalaryRepo.saveAll(acList);
-		}
-
+	public void SalaryAccountList() {
+		postAccountSalary.AccountSalaryList();
 	}
 
 	// Find Accounts By Name

@@ -27,26 +27,18 @@ import com.accounting.rest.services.AccountsServices;
 //@CrossOrigin
 @RequestMapping("api/accounts")
 public class AccountsController {
-	private final AccountsServices accountsServices;
-	private final AccountsForSalesServices accountsForSalesServices;
-	private final AccountsForSalaryServices accountsForSalaryServices;
-	private final AccountsForEmiServices accountsForEmiServices;
-	private final AccountsForPurchaseServices accountsForPurchaseServices;
-	private final AccountsForAMCServices accountsForAMCServices;
-
 	@Autowired
-	public AccountsController(AccountsServices accountsServices, AccountsForSalesServices accountsForSalesServices,
-			AccountsForSalaryServices accountsForSalaryServices, AccountsForEmiServices accountsForEmiServices,
-			AccountsForPurchaseServices accountsForPurchaseServices, AccountsForAMCServices accountsForAMCServices) {
-		super();
-		this.accountsServices = accountsServices;
-		this.accountsForSalesServices = accountsForSalesServices;
-		this.accountsForSalaryServices = accountsForSalaryServices;
-		this.accountsForEmiServices = accountsForEmiServices;
-		this.accountsForPurchaseServices = accountsForPurchaseServices;
-		this.accountsForAMCServices = accountsForAMCServices;
-
-	}
+	private AccountsServices accountsServices;
+	@Autowired
+	private AccountsForSalesServices accountsForSalesServices;
+	@Autowired
+	private AccountsForSalaryServices accountsForSalaryServices;
+	@Autowired
+	private AccountsForEmiServices accountsForEmiServices;
+	@Autowired
+	private AccountsForPurchaseServices accountsForPurchaseServices;
+	@Autowired
+	private AccountsForAMCServices accountsForAMCServices;
 
 // get employee
 	@GetMapping("/emp")

@@ -36,7 +36,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and() // Enable CORS support
-				.csrf().disable().authorizeRequests().antMatchers("/api/authenticate", "/api/test").permitAll()
+				.csrf().disable().authorizeRequests().antMatchers("/api/auth/login", "/api/test").permitAll()
 				.anyRequest().authenticated().and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

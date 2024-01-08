@@ -14,7 +14,8 @@ import com.accounting.rest.entity.InventoryItems;
 import com.accounting.rest.repository.InventoryItemsRepo;
 
 @Service
-@Transactional
+@Transactional() // Use For Single Database
+//@Transactional("tenantTransactionManager")//Use For Multitenant
 public class InventoryItemsService {
 	private final InventoryItemsRepo inventoryItemsRepo;
 
