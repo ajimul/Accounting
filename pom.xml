@@ -75,7 +75,7 @@
 	</dependencies>
 
 	<build>
-	<finalName>d-drop-project</finalName>
+	<finalName>account</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

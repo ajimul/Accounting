@@ -1,6 +1,7 @@
 package com.accounting.rest.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accounting.rest.entity.Users;
 import com.accounting.rest.repository.UsersRepo;
+
 
 @Service
 @Transactional() // Use For Single Database
@@ -29,64 +31,30 @@ public class UsersServices {
 		return usersRepo.findAll();
 
 	}
+	public String createOrUpdateUser(Users user) {
+		Optional<Users> existingUser = usersRepo.findBy_UserName(user.getUserName());
+		if (existingUser.isPresent()) {
+			// Update existing user
+			Users updatedUser = existingUser.get();
+			Users newUser = new Users();
+			newUser.setUserId(updatedUser.getUserId());
+			newUser.setUserName(user.getUserName());
+			newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+			newUser.setRoles(user.getRoles());
+			newUser.setClientId(user.getClientId());
+			newUser.setActive(user.isActive());
+			newUser.setDbName(user.getDbName());
 
-	public Users add_User(Users entity) {
-		Users user = new Users();
-		user.setUserName("harri");
-//		user.setUserName(entity.getUserName());
-//		user.setPassword(passwordEncoder.encode(entity.getPassword()));
-//		user.setPassword(passwordEncoder.encode("stupid420"));
-		user.setPassword(passwordEncoder.encode("admin"));
-		user.setRoles(entity.getRoles());
-		user.setClientId(entity.getClientId());
-		user.setActive(entity.isActive());
-		user.setDbName(entity.getDbName());
-		return usersRepo.save(user);
+			usersRepo.save(newUser);
+			return "User Update Success!\nUser:" + newUser.getUserName() + ",\nStatus:"
+					+ (newUser.isActive() ? "Active" : "Inactive");
+		} else {
+			// Create a new user if not exists
+			usersRepo.save(user);
+			return "User Create Success!\nUser: " + user.getUserName() + ",\nStatus: "
+					+ (user.isActive() ? "Active" : "Inactive");
 
+		}
 	}
-
-	public Users update_User(Users entity, String userName, String password) {
-		Users newEntity = usersRepo.find_userName_password(userName, passwordEncoder.encode(password)).get();
-		newEntity.setUserName(entity.getUserName());
-		newEntity.setClientId(entity.getClientId());
-		newEntity.setDbName(entity.getDbName());
-		newEntity.setPassword(passwordEncoder.encode(entity.getPassword()));
-		newEntity.setActive(entity.isActive());
-		newEntity.setRoles(entity.getRoles());
-		return usersRepo.save(newEntity);
-
-	}
-
-//
-////Find All User 
-//	public List<GenericsUser> findAllUser() {
-//		List<GenericsUser> typeUser = new ArrayList<GenericsUser>();
-//		List<Users> userList = usersRepo.findAll();
-//		for (Users users : userList) {
-//			GenericsUser newUser = new GenericsUser();
-//			newUser.setUserId(users.getUserId());
-//			newUser.setUserName(users.getUserName());
-//			typeUser.add(newUser);
-//
-//		}
-//
-//		return typeUser;
-//
-//	}
-//
-////Find User By Id
-//	public Users findUserById(Long id) {
-//		return usersRepo.findById(id).orElseThrow(() -> new UserNotFoundException(""));
-//
-//	}
-//
-////Update User
-//
-////Delete User By Id
-//	public void deleteUserById(Long id) {
-//
-//		usersRepo.deleteById(id);
-//
-//	}
 
 }
